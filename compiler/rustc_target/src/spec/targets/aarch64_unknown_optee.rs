@@ -26,6 +26,7 @@ pub fn target() -> Target {
             panic_strategy: PanicStrategy::Abort,
             position_independent_executables: true,
             relro_level: RelroLevel::Full,
+            features = "+strict-align".into(),
             .. Default::default()
         }
     }
