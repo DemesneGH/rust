@@ -43,6 +43,7 @@ fn main() {
         || target_os == "hurd"
         || target_os == "uefi"
         || target_os == "teeos"
+        || target_os == "optee"
         || target_os == "zkvm"
 
         // See src/bootstrap/src/core/build_steps/synthetic_targets.rs

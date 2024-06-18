@@ -11,4 +11,6 @@ panic_unwind = { path = "../panic_unwind" }
 panic_abort = { path = "../panic_abort" }
 
 [target.'cfg(not(all(windows, target_env = "msvc")))'.dependencies]
-libc = { version = "0.2.150", default-features = false }
+#libc = { version = "0.2.150", default-features = false }
+libc =  { git = "https://github.com/DemesneGH/libc.git", branch = "optee", default-features = false }
+

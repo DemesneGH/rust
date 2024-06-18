@@ -18,4 +18,5 @@ core = { path = "../core" }
 compiler_builtins = "0.1.0"
 
 [target.'cfg(not(all(windows, target_env = "msvc")))'.dependencies]
-libc = { version = "0.2", default-features = false }
+#libc = { version = "=0.2.153", default-features = false }
+libc =  { git = "https://github.com/DemesneGH/libc.git", branch = "optee", default-features = false }
