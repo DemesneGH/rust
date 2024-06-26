@@ -6,7 +6,6 @@
 #![allow(unused_variables)]
 #![allow(dead_code)]
 
-pub use self::rand::hashmap_random_keys;
 use crate::os::raw::c_char;
 
 pub mod alloc;
@@ -14,27 +13,26 @@ pub mod alloc;
 pub mod args;
 #[path = "../unsupported/env.rs"]
 pub mod env;
-//pub mod fd;
 #[path = "../unsupported/fs.rs"]
 pub mod fs;
 #[path = "../unsupported/io.rs"]
 pub mod io;
 pub mod net;
+#[path = "../unsupported/os.rs"]
 pub mod os;
 #[path = "../unsupported/pipe.rs"]
 pub mod pipe;
 #[path = "../unsupported/process.rs"]
 pub mod process;
-mod rand;
+#[path = "../unsupported/stdio.rs"]
 pub mod stdio;
+#[path = "../unsupported/thread.rs"]
 pub mod thread;
 pub mod thread_local_dtor;
-//#[path = "../unsupported/thread_local_key.rs"]
 pub mod thread_local_key;
 #[allow(non_upper_case_globals)]
 pub mod time;
 
-// #[cfg(not(test))]
 pub unsafe fn init(argc: isize, argv: *const *const u8, sigpipe: u8) {}
 
 // SAFETY: must be called only once during runtime cleanup.
@@ -70,4 +68,9 @@ pub unsafe fn strlen(mut _s: *const c_char) -> usize {
 
 pub fn abort_internal() -> ! {
     loop { }
+}
+
+// same as the one in unsupported/common.rs
+pub fn hashmap_random_keys() -> (u64, u64) {
+    (1, 2)
 }
